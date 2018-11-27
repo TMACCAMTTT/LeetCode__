@@ -66,6 +66,23 @@ int CountLetter(string a)
 	return 0;
 }
 
+int maxArea(vector<int>& height)
+{
+	//11, 最大面积
+	int res = 0;
+	int i = 0, j = height.size() - 1;
+	while (i < j) {
+		res = max(res, min(height[i], height[j]) * (j - i));
+		if (height[i] < height[j]) {
+			i++;
+		}
+		else {
+			j--;
+		}
+	}
+	return res;
+}
+
 vector<int> removeDuplicates(vector<int>& nums)
 {
 	//26,移除数组中重复元素
@@ -139,6 +156,94 @@ int searchInsert(vector<int>& nums, int target)
 	return nums.size();
 }
 
+int trap(vector<int>& height) {
+	//双指针法收集雨水， 从两边往中间走；对于左边的某个高度A， 当A右边比它矮时，结果增加；对于右边的某个高度B
+	//，当B左边比它矮时，结果增加。
+	int l = 0, r = height.size() - 1, res = 0;
+	while (l < r) {
+		int mn = min(height[l], height[r]);
+		if (mn == height[l]) {
+			++l;
+			while (l < r && height[l] < mn) {
+				res += mn - height[l++];
+			}
+		}
+		else {
+			--r;
+			while (l < r && height[r] < mn) {
+				res += mn - height[r--];
+			}
+		}
+	}
+	return res;
+}
+
+int trap_stack(vector<int>& height)
+{
+	//利用栈。如果栈为空，或者当前高度小于栈顶高度，则将当前坐标压入栈。如果当前高度大于栈顶高度，则可能有坑。pop一下，如果栈为空，则没坑；否则，宽度为
+	//当前坐标-栈顶坐标-1， 高度为当前高度与栈顶高度之间的较小值减去刚刚出栈的高度。将水量计入结果。
+	int ans = 0, current = 0;
+	stack<int> st;
+	while (current < height.size()) {
+		while (!st.empty() && height[current] > height[st.top()]) {
+			int top = st.top();
+			st.pop();
+			if (st.empty())
+				break;
+			int distance = current - st.top() - 1;
+			int bounded_height = min(height[current], height[st.top()]) - height[top];
+			ans += distance * bounded_height;
+		}
+		st.push(current++);
+	}
+	return ans;
+}
+
+int trap_dp(vector<int>& height)
+{
+	//动态规划1，两个数组存储每个坐标左边和右边的最大值。最后遍历每个坐标求和。
+	if (height.empty())
+		return 0;
+	int ans = 0;
+	int size = height.size();
+	vector<int> left_max(size), right_max(size);
+	left_max[0] = height[0];
+	for (int i = 1; i < size; i++) {
+		left_max[i] = max(height[i], left_max[i - 1]);
+	}
+	right_max[size - 1] = height[size - 1];
+	for (int i = size - 2; i >= 0; i--) {
+		right_max[i] = max(height[i], right_max[i + 1]);
+	}
+ 	for (int i = 1; i < size - 1; i++) {
+		ans += min(left_max[i], right_max[i]) - height[i];
+	}
+	return ans;
+}
+
+int trap_dp_2(vector<int>& height)
+{
+	//动态规划改进，不需要保存每个坐标右边最大值
+	int ans = 0;
+	if (height.empty()) {
+		return 0;
+	}
+	int n = height.size();
+	vector<int> left_max(n);
+	left_max[0] = height[0];
+	for (int i = 1; i < n; i++)
+	{
+		left_max[i] = max(left_max[i - 1], height[i]);
+	}
+	int right_max = height[n - 1];
+	for (int i = n - 1; i >= 0; i--)
+	{
+		right_max = max(right_max, height[i]);
+		ans += min(right_max, left_max[i]) - height[i];
+	}
+	return ans;
+}
+
 int divide(vector<int>& nums, int l, int r) {
 	//53题分治法
 	if (l == r)  return nums[l];
@@ -165,7 +270,8 @@ int divide(vector<int>& nums, int l, int r) {
 	return max(lret, max(rret, mret));
 }
 
-vector<int> getRow(int rowIndex) {
+vector<int> getRow(int rowIndex) 
+{
 	vector<vector<int>> res(rowIndex + 1, vector<int>());
 	for (int i = 0; i < rowIndex + 1; i++)
 	{
