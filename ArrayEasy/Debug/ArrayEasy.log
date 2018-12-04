@@ -1,2 +1,10 @@
-﻿  main.cc
+﻿  src.cc
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(93): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(147): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(187): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(318): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(330): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(358): warning C4018: “>”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(359): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\arrayeasy\src.cc(397): warning C4018: “>=”: 有符号/无符号不匹配
   ArrayEasy.vcxproj -> G:\Github\Leetcode\LeetCode__\ArrayEasy\Debug\ArrayEasy.exe

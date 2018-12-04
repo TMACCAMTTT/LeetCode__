@@ -284,6 +284,33 @@ vector<int> getRow(int rowIndex)
 	return res[rowIndex];
 }
 
+int minimumTotal(vector<vector<int>>& triangle) {
+	//动态规划要点：1.dp的定义；2.dp转移方程
+		/*int h = triangle.size();
+		vector<vector<int>> dp(h, vector<int>(h, 0));
+		for(int i = 0; i < h; i++)
+		{
+			dp[h - 1][i] = triangle[h - 1][i];
+		}
+		for(int i = h - 2; i >= 0; i--)
+		{
+			for(int j = i; j >=0; j--)
+			{
+				dp[i][j] = min(dp[i + 1][j], dp[i + 1][j + 1]) + triangle[i][j];
+			}
+		}
+		return dp[0][0];*/
+	vector<int> dp = triangle[triangle.size() - 1];
+	for (int i = dp.size() - 2; i >= 0; i--)
+	{
+		for (int j = 0; j <= i; j++)
+		{
+			dp[j] = triangle[i][j] + min(dp[j], dp[j + 1]);
+		}
+	}
+	return dp[0];
+}
+
 int maxProfit1(vector<int>& prices)
 {
 	//121卖袜子，只能卖一次,待定！！！！！
@@ -299,11 +326,80 @@ int maxProfit1(vector<int>& prices)
 int maxProfit2(vector<int>& prices)
 {
 	//122卖袜子，卖多次
-	int res = 0;
+	//方法一，低效
+	/*int res = 0;
 	for (int i = 1; i < prices.size(); i++)
 	{
 		if (prices[i] > prices[i - 1]) {
 			res += prices[i] - prices[i - 1];
+		}
+	}
+	return res;*/
+	//方法二，动态规划，击败99%。
+	int len = prices.size();
+	int res = 0;
+	vector<vector<int>> dp(len, vector<int>(2, 0));
+	dp[0][0] = 0;
+	dp[0][1] = -prices[0];
+	for (int i = 1; i < len; i++)
+	{
+		dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+		dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+		res = max(res, max(dp[i][0], dp[i][1]));
+	}
+	return res;
+}
+
+int maxProduct(vector<int>& nums) {
+	//152最大字序列乘积，用n * 2二维数组，分别存储每次循环时当前的最大值和最小值。
+	int n = nums.size();
+	int res = nums[0];
+	vector<vector<int>> dp(n, vector<int>(2, 0));
+	dp[0][0] = dp[0][1] = nums[0];
+	for (int i = 1; i < n; i++)
+	{
+		dp[i][0] = max(max(dp[i - 1][0] * nums[i], dp[i - 1][1] * nums[i]), nums[i]);
+		dp[i][1] = min(min(dp[i - 1][0] * nums[i], dp[i - 1][1] * nums[i]), nums[i]);
+		res = max(res, dp[i][0]);
+	}
+	return res;
+}
+
+int maxProfitK(int k, vector<int>& prices) {
+	//动态规划：dp[i][j][2]
+	if (prices.empty() || k <= 0)
+		return 0;
+	int res = 0;
+	if (k > prices.size() / 2) {
+		for (int i = 1; i < prices.size(); i++)
+		{
+			if (prices[i] > prices[i - 1])
+				res += prices[i] - prices[i - 1];
+		}
+		return res;
+	}
+	int n = prices.size();
+	vector<vector<vector<int>>> dp(n, vector<vector<int>>(k + 1, vector<int>(2, 0)));
+	dp[0][0][0] = 0;
+	dp[0][0][1] = -10000;
+	for (int i = 1; i <= k; i++)
+	{
+		dp[0][i][0] = -10000;
+		dp[0][i][1] = -10000;
+	}
+	dp[0][1][1] = -prices[0];
+	for (int i = 1; i < n; i++)
+	{
+		for (int j = 0; j <= k; j++)
+		{
+			if (j != 0) {
+				dp[i][j][1] = max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i]);
+			}
+			else {
+				dp[i][j][1] = -10000;
+			}
+			dp[i][j][0] = max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i]);
+			res = max(res, dp[i][j][0]);
 		}
 	}
 	return res;
@@ -326,4 +422,29 @@ void rotate(vector<int>& nums, int k)
 		nums[i] = vec[i + nums.size() - k];
 	}
 	return;
+}
+
+vector<int> countBits(int num) {
+	//位运算很耗时间，取模比较快。
+	vector<int> vec(num + 1, 0);
+	/*for(int i = 0; i <= num; i++)
+	{
+		vector<int> veci;
+		int k = i;
+		while(k > 0){
+			veci.push_back(k%2);
+			k /= 2;
+		}
+		int count = 0;
+		for(int j = 0; j < veci.size(); j++)
+		{
+			if(veci[j] == 1) count++;
+		}
+		vec[i] = count;
+	}*/
+	for (int i = 1; i <= num; i++)
+	{
+		vec[i] = vec[i / 2] + (i % 2);
+	}
+	return vec;
 }
