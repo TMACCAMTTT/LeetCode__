@@ -1,0 +1,5 @@
+﻿  main.cc
+  src.cc
+g:\github\leetcode\leetcode__\stack\stack\src.cc(5): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
+  Stack.vcxproj -> G:\Github\Leetcode\Leetcode__\Stack\Debug\Stack.exe
