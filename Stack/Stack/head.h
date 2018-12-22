@@ -6,7 +6,7 @@
 using namespace std;
 
 class MyQueue {
-	//232, 用两个栈实现队列，考虑stackOut是否为空，而不是stackIn;
+//232, 用两个栈实现队列，考虑stackOut是否为空，而不是stackIn;
 public:
 	/** Initialize your data structure here. */
 	MyQueue() {
@@ -49,7 +49,7 @@ public:
 
 private:
 	stack<int> stackIn, stackOut;
-};
+};//232//225
 class MyStack {
 	//225,用队列实现栈：queue_b为辅助队列。
 public:
@@ -100,7 +100,37 @@ public:
 	}
 private:
 	queue<int> queue_a, queue_b;
-};
+};//225//232
+class KthLargest {
+	//703返回数据流中第K大的元素，用优先队列，选择小顶堆。堆顶元素为堆中最小值，也就是数据流中第k大的值。新来一个数将其与堆顶元素比较，若大于堆顶元素则插入。
+public:
+	KthLargest(int k, vector<int> nums) {
+		size = k;
+		for (int i = 0; i < nums.size(); i++)
+		{
+			pq.push(nums[i]);
+			if (pq.size() > size) {
+				pq.pop();
+			}
+		}
+	}
+
+	int add(int val) {
+		if (pq.size() < size || val > pq.top()) {
+			pq.push(val);
+		}
+		if (pq.size() > size) {
+			pq.pop();
+		}
+		return pq.top();
+	}
+private:
+	priority_queue<int, vector<int>, greater<int> > pq;
+	int size;
+};//703//703
 
 
 bool isValid(string s);//20括号匹配
+int trap(vector<int>& height);//42收集雨水
+int calculate(string s);//224基本计算器
+vector<int> maxSlidingWindow(vector<int>& nums, int k);//239滑动窗口最大值
