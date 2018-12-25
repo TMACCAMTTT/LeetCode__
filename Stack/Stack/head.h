@@ -3,6 +3,8 @@
 #include <stack>
 #include <string>
 #include <queue>
+#include <map>
+#include <unordered_map>
 using namespace std;
 
 class MyQueue {
@@ -129,8 +131,17 @@ private:
 	int size;
 };//703//703
 
-
-bool isValid(string s);//20括号匹配
-int trap(vector<int>& height);//42收集雨水
-int calculate(string s);//224基本计算器
-vector<int> maxSlidingWindow(vector<int>& nums, int k);//239滑动窗口最大值
+vector<int> twoSum(vector<int>& nums, int target);//1.two sum
+vector<vector<int>> threeSum(vector<int>& nums);//15.three sum
+int threeSumClosest(vector<int>& nums, int target);//16.three sum closet
+vector<vector<int>> kSum(vector<int>& nums, int k, int index, int target);//kSum
+vector<vector<int>> fourSumRecursive(vector<int>& nums, int target);//递归
+vector<vector<int>> fourSum(vector<int>& nums, int target);//18.手动去重
+bool isValid(string s);//20.括号匹配
+int trap(vector<int>& height);//42.收集雨水
+int calculate(string s);//224.基本计算器
+vector<int> maxSlidingWindow(vector<int>& nums, int k);//239.滑动窗口最大值
+bool isAnagram(string s, string t);//242.valid anagram
+int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D);//454.4 sum II
+int fourSumCountHash(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D);//454 哈希表解法
+int maxWidthRamp(vector<int>& A);//962.待定

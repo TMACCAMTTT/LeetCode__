@@ -1,14 +1,17 @@
-﻿  main.cc
-g:\github\leetcode\leetcode__\stack\stack\head.h(109): warning C4018: “<”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\head.h(112): warning C4018: “>”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\head.h(119): warning C4018: “<”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\head.h(122): warning C4018: “>”: 有符号/无符号不匹配
-  src.cc
-g:\github\leetcode\leetcode__\stack\stack\head.h(109): warning C4018: “<”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\head.h(112): warning C4018: “>”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\head.h(119): warning C4018: “<”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\head.h(122): warning C4018: “>”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\src.cc(6): warning C4018: “<”: 有符号/无符号不匹配
-g:\github\leetcode\leetcode__\stack\stack\src.cc(82): warning C4018: “<”: 有符号/无符号不匹配
-  正在生成代码...
+﻿  src.cc
+g:\github\leetcode\leetcode__\stack\stack\head.h(111): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\head.h(114): warning C4018: “>”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\head.h(121): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\head.h(124): warning C4018: “>”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(21): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(42): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(70): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(105): warning C4018: “>=”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(138): warning C4018: “<=”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(149): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(173): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(277): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(282): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(323): warning C4018: “<”: 有符号/无符号不匹配
+g:\github\leetcode\leetcode__\stack\stack\src.cc(375): warning C4018: “<”: 有符号/无符号不匹配
   Stack.vcxproj -> G:\Github\Leetcode\Leetcode__\Stack\Debug\Stack.exe
