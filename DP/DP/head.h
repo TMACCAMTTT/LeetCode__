@@ -138,7 +138,14 @@ void Tsp::printProcess()
 
 
 int minPathSum(vector<vector<int>>& grid);//64最小路径和
+int numDecodings(string s);
 int rob(vector<int>& nums);//213抢劫2
 int nthUglyNumber(int n);//264丑数
 int integerBreak(int n);//343分离整数
+bool PredictTheWinner(vector<int>& nums);//486
+bool stoneGame(vector<int>& piles);//877.石头游戏递归解法
+int game(vector<int>& piles, int left, int right);//
+bool stoneGameDp(vector<int>& piles);//877.石头游戏动态规划解法
 int maxWidthRamp(vector<int>& A);//962最大宽度ramp
+int maximalSquare(vector<vector<char>>& matrix);
+int maxTurbulenceSize(vector<int>& A);
